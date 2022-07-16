@@ -24,7 +24,8 @@ Plug 'tpope/vim-commentary' "gcc for commentary
 
 "IDE
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
-Plug 'itchyny/lightline.vim' "line tool for code
+Plug 'vim-airline/vim-airline' "Line tool for code
+Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'neovim/nvim-lspconfig'
@@ -43,12 +44,20 @@ Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'mlaursen/vim-react-snippets'
 
+"html
+Plug 'mattn/emmet-vim'
+
 "LSP
 Plug 'neovim/nvim-lspconfig'
+
+"Airline Configurations
+let g:airline#extensions#tabline#enabled = 1
 
 call plug#end()
 
 colorscheme everblush
+let g:airline_theme='deus'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 "NERDTree Configurations
 let NERDTreeQuitOnOpen=1
@@ -58,6 +67,9 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
 nnoremap <leader>f :Ag<CR>
+nnoremap <leader>q :bd<CR>
+nnoremap <leader>Q :q!<CR>
+nnoremap <leader>w :w<CR>
 
 "INDENT Configurations
 let g:indentLine_enabled = 1
@@ -66,16 +78,38 @@ let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
 
 "Snippet Configurations
-let g:UtilSnipsExpandTrigger= '<tab>'
+let g:UtilSnipsExpandTrigger = '<tab>'
 
 "Emmet Configurations
-let g:user_emmet_mode= 'n'
-let g:user_emmet_leader_key= ','
-let g:user_emmet_settings= {
-    'javascript' : {
-      'extends' : 'jsx'
-    }
-}
+let g:user_emmet_mode = 'n'
+let g:user_emmet_leader_key = ','
+let g:user_emmet_settings = {
+\  'variables': {'lang': 'ja'},
+\  'html': {
+\    'default_attributes': {
+\      'option': {'value': v:null},
+\      'textarea': {'id': v:null, 'name': v:null, 'cols': 10, 'rows': 10},
+\    },
+\    'snippets': {
+\      'html:5': "<!DOCTYPE html>\n"
+\              ."<html lang=\"${lang}\">\n"
+\              ."<head>\n"
+\              ."\t<meta charset=\"${charset}\">\n"
+\              ."\t<title></title>\n"
+\              ."\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
+\              ."</head>\n"
+\              ."<body>\n\t${child}|\n</body>\n"
+\              ."</html>",
+\    },
+\  },
+\  'javascript' :{
+\	'extends' : 'jsx'
+\  }
+\}
+
+"Prettier Configurations
+command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
+nnoremap <leader>s :Prettier<CR>
 
 "LSP Configurations
 lua <<EOF
