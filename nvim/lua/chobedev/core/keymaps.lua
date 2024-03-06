@@ -3,6 +3,7 @@ vim.g.mapleader = " "
 local keymap = vim.keymap
 
 -- General Keymaps
+keymap.set("n",",","<C-v>") -- visual block mode
 
 keymap.set("n", "<leader>nh", ":nohl<CR>") -- delete highlight
 
@@ -29,6 +30,7 @@ keymap.set("n", "<leader>fs", "<CMD>Telescope grep_string<CR>")
 keymap.set("n", "<leader>fb", "<CMD>Telescope buffers<CR>")
 keymap.set("n", "<leader>fh", "<CMD>Telescope help_tags<CR>")
 keymap.set("n", "<leader>fm", "<CMD>Telescope media_files<CR>")
+keymap.set("n", "<leader>ft", "<CMD>TodoTelescope<CR>")
 
 keymap.set("n", "<leader>tt", "<Plug>RestNvim<CR>") -- rest.nvim
 

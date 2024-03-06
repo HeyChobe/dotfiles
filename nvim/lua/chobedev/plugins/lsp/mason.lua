@@ -19,7 +19,9 @@ mason_lspconfig.setup({
   ensure_installed = {
     "html",
     "tsserver",
-    "cssls"
+    "cssls",
+    "pyright",
+    "tailwindcss"
   },
   automatic_installation = true
 })

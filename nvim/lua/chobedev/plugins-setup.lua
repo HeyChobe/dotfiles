@@ -28,14 +28,13 @@ return packer.startup(function(use)
   use('wbthomason/packer.nvim')
 
   -- Themes
-  use('bluz71/vim-nightfly-guicolors')
+  -- use('bluz71/vim-nightfly-guicolors')
   use('sainnhe/gruvbox-material')
-  use('folke/tokyonight.nvim')
-  use { "catppuccin/nvim", as = "catppuccin" }
-  use('sainnhe/everforest')
-  use("rebelot/kanagawa.nvim")
-  use('morhetz/gruvbox')
-  
+  -- use('folke/tokyonight.nvim')
+  -- use { "catppuccin/nvim", as = "catppuccin" }
+  -- use('sainnhe/everforest')
+  -- use("rebelot/kanagawa.nvim")
+  -- use('morhetz/gruvbox')
   
   -- Navigation
   use('christoomey/vim-tmux-navigator') -- allows to use Ctrl + hjkl to move between windows
@@ -56,8 +55,10 @@ return packer.startup(function(use)
   }
 
   -- Image Preview
-  use('nvim-telescope/telescope-media-files.nvim')
-  use('nvim-lua/popup.nvim')
+  use { 'nvim-lua/popup.nvim'}
+  use { 'nvim-lua/plenary.nvim' } 
+  use { 'nvim-telescope/telescope-media-files.nvim' }
+
 
   -- Status Line
   use {
@@ -80,11 +81,14 @@ return packer.startup(function(use)
   use("williamboman/mason-lspconfig.nvim")
   use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
 
-  use({
-    "glepnir/lspsaga.nvim",
-    branch = "main", 
-    requires = { {"nvim-tree/nvim-web-devicons"} }
-  }) -- enhanced lsp uis
+ -- Enhanced lsp uis
+  use ({
+    'nvimdev/lspsaga.nvim',
+    after = 'nvim-lspconfig',
+    config = function()
+        require('lspsaga').setup({})
+    end,
+  })
 
   use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
   use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
@@ -95,6 +99,8 @@ return packer.startup(function(use)
   -- Formatting and linting
   use("jose-elias-alvarez/null-ls.nvim")
   use("jayp0521/mason-null-ls.nvim")
+  use('MunifTanjim/prettier.nvim')
+  use { 'adoyle-h/lsp-toggle.nvim' }
 
   -- Treesitter
   use {
@@ -120,6 +126,23 @@ return packer.startup(function(use)
   use{
     'rest-nvim/rest.nvim',
     requires = {"nvim-lua/plenary.nvim"}
+  }
+
+  -- Taiwind Sorter
+  use {
+    'laytan/tailwind-sorter.nvim',
+    requires = {'nvim-treesitter/nvim-treesitter', 'nvim-lua/plenary.nvim'},
+    config = function() require('tailwind-sorter').setup() end,
+    run = 'cd formatter && npm i && npm run build',
+  }
+
+  -- Notifications
+  use 'rcarriga/nvim-notify'
+
+  -- TODO Highlights
+  use {
+    "folke/todo-comments.nvim",
+    requires = { "nvim-lua/plenary.nvim" },
   }
 
   if packer_bootstrap then 

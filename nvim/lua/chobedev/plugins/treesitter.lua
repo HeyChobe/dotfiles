@@ -24,6 +24,7 @@ treesitter.setup({
     "html",
     "css",
     "markdown",
+    "markdown_inline",
     "lua",
     "vim",
     "http"

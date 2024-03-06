@@ -15,7 +15,10 @@ saga.setup({
       edit = "<CR>",
     },
     ui = {
-      border = "rounded"
+      border = "rounded",
+      devicon = true,
+      code_action = 💡,
+
     }
 })
 

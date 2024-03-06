@@ -10,8 +10,12 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 null_ls.setup({
   sources = {
-    formatting.prettier,
-    formatting.eslint_d
+    formatting.eslint_d,
+    formatting.prettier.with({
+        condition = function()
+          return #null_ls.get_source({ name = "eslint_d", method = null_ls.methods.FORMATTING }) == 0
+        end
+      }),
   },
   on_attach = function(current_client, bufnr)
     if current_client.supports_method("textDocument/formatting") then
@@ -21,10 +25,10 @@ null_ls.setup({
         buffer = bufnr,
         callback = function()
           vim.lsp.buf.format({
-            filter = function(client)
-              --  only use null-ls for formatting instead of lsp server
-              return client.name == "null-ls"
-            end,
+            -- filter = function(client)
+            --    -- only use null-ls for formatting instead of lsp server
+            --   return client.name == "null-ls"
+            -- end,
             bufnr = bufnr,
           })
         end,

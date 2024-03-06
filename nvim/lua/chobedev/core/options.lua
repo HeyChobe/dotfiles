@@ -1,5 +1,8 @@
 local opt = vim.opt -- for conciseness
 
+-- notifications
+vim.notify = require("notify")
+
 -- line numbers
 opt.relativenumber = true
 opt.number = true

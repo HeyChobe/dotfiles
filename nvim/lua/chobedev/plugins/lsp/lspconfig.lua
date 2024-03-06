@@ -21,10 +21,9 @@ local on_attach = function(client, bufnr)
   local options = {noremap = true, silent = true, buffer = bufnr}
 
   -- set keybinds
-   keymap.set("n", "gf", "<CMD>Lspsaga lsp_finder<CR>", opts) -- show definition, references
-   keymap.set("n", "gD", "<CMD>lua vim.lsp.buf.declaration()<CR>", opts) -- got to declaration
+   keymap.set("n", "gf", "<CMD>Lspsaga finder<CR>", opts) -- show definition, references
    keymap.set("n", "gd", "<CMD>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
-   keymap.set("n", "gi", "<CMD>lua vim.lsp.buf.implementation()<CR>", opts) -- go to implementation
+   keymap.set("n", "gi", "<CMD>Lspsaga goto_definition<CR>", opts) -- go to implementation
    keymap.set("n", "<leader>ca", "<CMD>Lspsaga code_action<CR>", opts) -- see available code actions
    keymap.set("n", "<leader>rn", "<CMD>Lspsaga rename<CR>", opts) -- smart rename
    keymap.set("n", "<leader>D", "<CMD>Lspsaga show_line_diagnostics<CR>", opts) -- show  diagnostics for line
@@ -59,6 +58,22 @@ lspconfig["cssls"].setup({
 
 -- configre tsserver
 lspconfig["tsserver"].setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+
+-- configre ccls 
+lspconfig["cssls"].setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+
+lspconfig["pyright"].setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+
+lspconfig["tailwindcss"].setup({
   capabilities = capabilities,
   on_attach = on_attach,
 })

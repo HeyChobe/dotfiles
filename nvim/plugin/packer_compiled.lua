@@ -150,9 +150,12 @@ _G.packer_plugins = {
     url = "https://github.com/onsails/lspkind.nvim"
   },
   ["lspsaga.nvim"] = {
+    config = { "\27LJ\2\0029\0\0\2\0\3\0\a6\0\0\0'\1\1\0B\0\2\0029\0\2\0004\1\0\0B\0\2\1K\0\1\0\nsetup\flspsaga\frequire\0" },
+    load_after = {},
     loaded = true,
-    path = "/home/chobedev/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
-    url = "https://github.com/glepnir/lspsaga.nvim"
+    needs_bufread = false,
+    path = "/home/chobedev/.local/share/nvim/site/pack/packer/opt/lspsaga.nvim",
+    url = "https://github.com/nvimdev/lspsaga.nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,
@@ -173,6 +176,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/chobedev/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
+  },
+  ["mini.nvim"] = {
+    loaded = true,
+    path = "/home/chobedev/.local/share/nvim/site/pack/packer/start/mini.nvim",
+    url = "https://github.com/echasnovski/mini.nvim"
   },
   ["null-ls.nvim"] = {
     loaded = true,
@@ -198,6 +206,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/chobedev/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-notify"] = {
+    loaded = true,
+    path = "/home/chobedev/.local/share/nvim/site/pack/packer/start/nvim-notify",
+    url = "https://github.com/rcarriga/nvim-notify"
   },
   ["nvim-transparent"] = {
     loaded = true,
@@ -231,11 +244,6 @@ _G.packer_plugins = {
     path = "/home/chobedev/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
-  ["peek.nvim"] = {
-    loaded = true,
-    path = "/home/chobedev/.local/share/nvim/site/pack/packer/start/peek.nvim",
-    url = "https://github.com/toppair/peek.nvim"
-  },
   ["plenary.nvim"] = {
     loaded = true,
     path = "/home/chobedev/.local/share/nvim/site/pack/packer/start/plenary.nvim",
@@ -251,6 +259,12 @@ _G.packer_plugins = {
     path = "/home/chobedev/.local/share/nvim/site/pack/packer/start/rest.nvim",
     url = "https://github.com/rest-nvim/rest.nvim"
   },
+  ["tailwind-sorter.nvim"] = {
+    config = { "\27LJ\2\2=\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\20tailwind-sorter\frequire\0" },
+    loaded = true,
+    path = "/home/chobedev/.local/share/nvim/site/pack/packer/start/tailwind-sorter.nvim",
+    url = "https://github.com/laytan/tailwind-sorter.nvim"
+  },
   ["telescope-media-files.nvim"] = {
     loaded = true,
     path = "/home/chobedev/.local/share/nvim/site/pack/packer/start/telescope-media-files.nvim",
@@ -260,6 +274,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/chobedev/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["todo-comments.nvim"] = {
+    loaded = true,
+    path = "/home/chobedev/.local/share/nvim/site/pack/packer/start/todo-comments.nvim",
+    url = "https://github.com/folke/todo-comments.nvim"
   },
   ["tokyonight.nvim"] = {
     loaded = true,
@@ -304,8 +323,18 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: tailwind-sorter.nvim
+time([[Config for tailwind-sorter.nvim]], true)
+try_loadstring("\27LJ\2\2=\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\20tailwind-sorter\frequire\0", "config", "tailwind-sorter.nvim")
+time([[Config for tailwind-sorter.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
+vim.cmd [[ packadd nvim-lspconfig ]]
+vim.cmd [[ packadd lspsaga.nvim ]]
+
+-- Config for: lspsaga.nvim
+try_loadstring("\27LJ\2\0029\0\0\2\0\3\0\a6\0\0\0'\1\1\0B\0\2\0029\0\2\0004\1\0\0B\0\2\1K\0\1\0\nsetup\flspsaga\frequire\0", "config", "lspsaga.nvim")
+
 vim.cmd [[ packadd nvim-treesitter ]]
 vim.cmd [[ packadd nvim-ts-autotag ]]
 time([[Sequenced loading]], false)
