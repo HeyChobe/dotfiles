@@ -60,6 +60,7 @@ lspconfig["cssls"].setup({
 lspconfig["tsserver"].setup({
   capabilities = capabilities,
   on_attach = on_attach,
+  root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
 })
 
 -- configre ccls 
@@ -74,6 +75,11 @@ lspconfig["pyright"].setup({
 })
 
 lspconfig["tailwindcss"].setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+
+lspconfig["angularls"].setup({
   capabilities = capabilities,
   on_attach = on_attach,
 })

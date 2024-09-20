@@ -18,6 +18,8 @@ keymap.set("n", "<leader>w", ":w<CR>") -- save file
 keymap.set("n", "<leader>W", ":wq<CR>") -- save file and quit
 keymap.set("n", "<leader>q", ":q<CR>") -- quit
 
+keymap.set("v", '<leader>c', '"+y') -- clipboard
+
 -- Plugin Keymaps
 
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- maximize split windows and toggle it

@@ -41,3 +41,8 @@ opt.clipboard:append("unnamedplus")
 -- split windows
 opt.splitright = true
 opt.splitbelow = true
+
+--fold
+opt.foldmethod = "expr"
+opt.foldexpr = "v:lnum == 1 ? '0' : getline(v:lnum) =~? '\\v[{[]' ? 'a1' : getline(v:lnum) =~? '\\v[}\\]]' ? 's1' : '='"
+opt.foldlevel = 99

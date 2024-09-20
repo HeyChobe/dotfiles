@@ -28,13 +28,7 @@ return packer.startup(function(use)
   use('wbthomason/packer.nvim')
 
   -- Themes
-  -- use('bluz71/vim-nightfly-guicolors')
   use('sainnhe/gruvbox-material')
-  -- use('folke/tokyonight.nvim')
-  -- use { "catppuccin/nvim", as = "catppuccin" }
-  -- use('sainnhe/everforest')
-  -- use("rebelot/kanagawa.nvim")
-  -- use('morhetz/gruvbox')
   
   -- Navigation
   use('christoomey/vim-tmux-navigator') -- allows to use Ctrl + hjkl to move between windows
@@ -46,6 +40,7 @@ return packer.startup(function(use)
   use('tpope/vim-commentary') --gcc for comment code
   use('norcalli/nvim-colorizer.lua') -- color demostration for css 
   use('lukas-reineke/indent-blankline.nvim') -- indentLine
+  use('brenoprata10/nvim-highlight-colors')
 
   -- File Explorer
   use('nvim-tree/nvim-tree.lua') -- file explorer on the left
@@ -144,6 +139,15 @@ return packer.startup(function(use)
     "folke/todo-comments.nvim",
     requires = { "nvim-lua/plenary.nvim" },
   }
+
+  -- Copilot
+  use 'github/copilot.vim'
+
+  -- Visual Multi
+  use 'mg979/vim-visual-multi' 
+
+  -- Games
+  use 'ThePrimeagen/vim-be-good'
 
   if packer_bootstrap then 
     require("packer").sync()
